@@ -1,0 +1,6 @@
+*.log
+.agents/
+.DS_Store
+*.zip
+*.xlsx
+*.pdf
