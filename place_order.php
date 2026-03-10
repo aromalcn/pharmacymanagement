@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$med_id = (int) $_POST['med_id'];
-$qty = (int) $_POST['qty'];
+$med_id = (int)$_POST['med_id'];
+$qty = (int)$_POST['qty'];
 $customer_name = trim($_POST['customer_name'] ?? '');
 $phone = trim($_POST['phone'] ?? '');
 $address = trim($_POST['address'] ?? '');
@@ -66,7 +66,8 @@ try {
     header("Location: order_success.php?id=$order_id");
     exit;
 
-} catch (Exception $e) {
+}
+catch (Exception $e) {
     if ($db->inTransaction()) {
         $db->rollBack();
     }

@@ -6,8 +6,8 @@
 require_once 'config/database.php';
 $db = getDB();
 
-$med_id = (int) ($_GET['med_id'] ?? 0);
-$qty = (int) ($_GET['qty'] ?? 1);
+$med_id = (int)($_GET['med_id'] ?? 0);
+$qty = (int)($_GET['qty'] ?? 1);
 
 // Fetch Medicine (Ensuring it's still available)
 $stmt = $db->prepare("SELECT * FROM medicines WHERE id = ? AND expiry_date > CURDATE() AND stock_quantity >= ?");
@@ -42,18 +42,18 @@ include 'includes/header.php';
             <div class="card-body">
                 <div style="display:flex; justify-content:space-between; margin-bottom: 0.5rem;">
                     <span>
-                        <?= htmlspecialchars($med['name']) ?> (x
-                        <?= $qty ?>)
+                        <?= htmlspecialchars($med['name'])?> (x
+                        <?= $qty?>)
                     </span>
                     <span>₹
-                        <?= number_format($subtotal, 2) ?>
+                        <?= number_format($subtotal, 2)?>
                     </span>
                 </div>
                 <div class="section-divider"></div>
                 <div style="display:flex; justify-content:space-between; font-weight: 700; font-size: 1.25rem;">
                     <span>Total</span>
                     <span style="color:var(--primary);">₹
-                        <?= number_format($subtotal, 2) ?>
+                        <?= number_format($subtotal, 2)?>
                     </span>
                 </div>
             </div>
@@ -66,8 +66,8 @@ include 'includes/header.php';
             </div>
             <div class="card-body">
                 <form action="place_order.php" method="POST">
-                    <input type="hidden" name="med_id" value="<?= $med_id ?>">
-                    <input type="hidden" name="qty" value="<?= $qty ?>">
+                    <input type="hidden" name="med_id" value="<?= $med_id?>">
+                    <input type="hidden" name="qty" value="<?= $qty?>">
 
                     <div class="form-group">
                         <label for="name">Full Name *</label>
